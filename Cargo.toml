@@ -34,4 +34,4 @@ inherits = "dev"
 [workspace]
 members = [
     "demo"
-, "demo"]
+]
