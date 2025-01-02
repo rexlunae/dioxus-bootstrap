@@ -50,3 +50,9 @@ Within your App component, add this:
 
     }
 ```
+
+## Library State
+
+Although this library is very early, I think it has several useful purposes. While it may be missing a lot of the ergonomic components that I hope to eventually create, there is nothing special about these components. You can mix and match the crate's components with other Bootstrap elements, which should work as you expect. I'm hoping that eventually, other people will make general-purpose components and contribute them back as well.
+
+One of the more annoying things that I've figured out is automatically switching between dark and light mode based on system settings, which isn't totally obvious in Dioxus. That alone makes it worthwhile for me to use.
