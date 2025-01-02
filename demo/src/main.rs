@@ -11,7 +11,6 @@ fn main() {
 #[component]
 fn App() -> Element {
     // Build cool things ✌️
-
     rsx! {
         // Global app resources
         document::Link { rel: "icon", href: FAVICON }
@@ -26,7 +25,7 @@ fn App() -> Element {
             integrity: "sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz",
             crossorigin: "anonymous"
         }
-
+        GlobalTheme {}
         Button { variant: ButtonVariant::Secondary, outline: true, "Default" }
         Button { toggle: true, "Toggle Me!" }
 
