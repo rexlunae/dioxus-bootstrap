@@ -1,5 +1,9 @@
 use dioxus::prelude::*;
 use super::size::*;
+use dioxus_router::{
+    navigation::NavigationTarget,
+    components::*,
+};
 
 #[derive(Clone, Copy, PartialEq)]
 pub enum ButtonVariant {
@@ -63,10 +67,17 @@ pub struct ButtonProps {
     style: String,
     #[props(optional, default = ButtonValues::None)]
     value: ButtonValues,
+
+    /// If present, generate the button as an 'a' tag using the dioxus router.
+    #[props(optional, default = None)]
+    link_to: Option<NavigationTarget>,
+
     #[props(optional)]
     children: Element,
     #[props(optional)]
     onclick: EventHandler<MouseEvent>,
+    #[props(optional)]
+    onmounted: EventHandler<MountedEvent>,
 }
 
 #[component]
@@ -94,20 +105,33 @@ pub fn Button(props: ButtonProps) -> Element {
 
     if props.toggle {
         return rsx! {
-            button { id: props.id, type: "button", style: props.style, onclick: props.onclick, class: class_list, "data-bs-toggle": "button", "aria-pressed": true, {props.children} }
+            button { id: props.id, type: "button", style: props.style, onclick: props.onclick, class: class_list, "data-bs-toggle": "button", "aria-pressed": true, onmounted: props.onmounted, {props.children} }
         }
 
     }
 
     match props.value {
         ButtonValues::Submit => rsx!{
-            input { id: props.id, type: "submit", value: "Submit", style: props.style, onclick: props.onclick, class: class_list, "aria-disabled": props.disabled,  {props.children} }
+            input { id: props.id, type: "submit", value: "Submit", style: props.style, onclick: props.onclick, class: class_list, "aria-disabled": props.disabled, onmounted: props.onmounted,  {props.children} }
         },
         ButtonValues::Reset => rsx!{
-            input { id: props.id, type: "reset", value: "Reset", style: props.style, onclick: props.onclick, class: class_list, "aria-disabled": props.disabled, {props.children} }
+            input { id: props.id, type: "reset", value: "Reset", style: props.style, onclick: props.onclick, class: class_list, "aria-disabled": props.disabled, onmounted: props.onmounted, {props.children} }
         },
-        _ => rsx! {
-            button { id: props.id, type: "button", style: props.style, onclick: props.onclick, class: class_list, "aria-disabled": props.disabled, {props.children} }
+        _ => match props.link_to {
+            Some(t) => rsx!{
+                Link {
+                    to: t,
+                    id: props.id,
+                    onclick: props.onclick,
+                    style: props.style,
+                    class: class_list,
+                    "aria-disabled": props.disabled,
+                    {props.children}
+                }
+            },
+            _ => rsx! {
+                button { id: props.id, type: "button", style: props.style, onclick: props.onclick, class: class_list, "aria-disabled": props.disabled, onmounted: props.onmounted, {props.children} }
+            }
         }
     }
 
