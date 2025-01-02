@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Erica Stith <rexlunae@gmail.com>"]
 edition = "2021"
 description = "A set of Bootstrap-based components for Dioxus."
-license = "MIT or Apache 2.0"
+license = "MIT OR Apache-2.0"
 license-file = "LICENSE.md"
 documentation = "README.md"
 
