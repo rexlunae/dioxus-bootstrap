@@ -18,3 +18,29 @@ impl Into<&'static str> for Size {
         }
     }
 }
+
+#[derive(Clone, Copy, Default, PartialEq)]
+pub enum ExtendedSize {
+    Small,
+    Medium,
+    Large,
+    XL,
+    XXL,
+    #[default]
+    Normal,
+    Fluid,
+}
+
+impl Into<&'static str> for ExtendedSize {
+    fn into(self) -> &'static str {
+        match self {
+            ExtendedSize::Small => "sm",
+            ExtendedSize::Medium => "md",
+            ExtendedSize::Large => "lg",
+            ExtendedSize::XL => "xl",
+            ExtendedSize::XXL => "xxl",
+            ExtendedSize::Fluid => "fluid",
+            _ => ""
+        }
+    }
+}

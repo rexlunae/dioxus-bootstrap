@@ -26,13 +26,17 @@ fn App() -> Element {
             crossorigin: "anonymous"
         }
         GlobalTheme {}
-        Button { variant: ButtonVariant::Secondary, outline: true, "Default" }
-        Button { toggle: true, "Toggle Me!" }
+        Container {
+            size: ExtendedSize::Fluid,
 
-        ButtonGroup {
-            label: "A test button group.",
             Button { variant: ButtonVariant::Secondary, outline: true, "Default" }
             Button { toggle: true, "Toggle Me!" }
-        }
+
+            ButtonGroup {
+                label: "A test button group.",
+                Button { variant: ButtonVariant::Primary, outline: false, "Left" }
+                Button { variant: ButtonVariant::Primary, toggle: true, "Right" }
+            }
+            }
     }
 }
