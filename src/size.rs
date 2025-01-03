@@ -21,6 +21,7 @@ impl Into<&'static str> for Size {
 
 #[derive(Clone, Copy, Default, PartialEq)]
 pub enum ExtendedSize {
+    XS,
     Small,
     Medium,
     Large,
@@ -34,6 +35,7 @@ pub enum ExtendedSize {
 impl Into<&'static str> for ExtendedSize {
     fn into(self) -> &'static str {
         match self {
+            ExtendedSize::XS => "xs",
             ExtendedSize::Small => "sm",
             ExtendedSize::Medium => "md",
             ExtendedSize::Large => "lg",
