@@ -1,9 +1,6 @@
 use dioxus::prelude::*;
 use super::size::*;
-use dioxus_router::{
-    navigation::NavigationTarget,
-    components::*,
-};
+use dioxus_router::navigation::NavigationTarget;
 
 #[derive(Clone, Copy, PartialEq)]
 pub enum ButtonVariant {
