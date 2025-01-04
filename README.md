@@ -16,6 +16,10 @@ Then you will need to ensure that the Bootstrap CSS and Javascript are loaded. T
 
 There are a couple of ways to do this:
 
+### Using the GlobalTheme {} Component
+
+There is a `GlobalTheme` component that will enable light or dark mode, and automatic switching (by default). It will also load the Bootstrap assets via CDN by default. If you want to load the assets manually or from somewhere else, you will need to disable this.
+
 ### Using the Dioxus.toml file in your project
 
 ```toml
