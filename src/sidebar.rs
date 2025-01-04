@@ -1,9 +1,6 @@
 use dioxus::prelude::*;
 use super::background::*;
-use dioxus_router::{
-    navigation::NavigationTarget,
-    components::*,
-};
+use dioxus_router::navigation::NavigationTarget;
 
 #[derive(Clone, Props, PartialEq)]
 pub struct SidebarProps {
