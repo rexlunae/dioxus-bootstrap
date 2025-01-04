@@ -791,6 +791,7 @@ dependencies = [
  "dioxus-html",
  "dioxus-logger",
  "dioxus-mobile",
+ "dioxus-router",
  "dioxus-signals",
  "dioxus-web",
  "manganis",
@@ -799,7 +800,7 @@ dependencies = [
 
 [[package]]
 name = "dioxus-bootstrap"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "dioxus",
  "dioxus-router",

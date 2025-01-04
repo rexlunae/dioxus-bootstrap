@@ -10,8 +10,8 @@ documentation = "../README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dioxus = { version = "0.6.0", features = ["fullstack"] }
-dioxus-bootstrap = { version = "0.1.0", path = "../" }
+dioxus = { version = "0.6.0", features = ["fullstack", "router"] }
+dioxus-bootstrap = { version = "0.1.5", path = "../" }
 
 [features]
 default = []

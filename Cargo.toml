@@ -1,6 +1,6 @@
 [package]
 name = "dioxus-bootstrap"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["Erica Stith <rexlunae@gmail.com>"]
 edition = "2021"
 description = "A set of Bootstrap-based components for Dioxus."
