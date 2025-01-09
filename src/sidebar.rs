@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
 use super::background::*;
 use dioxus_router::navigation::NavigationTarget;
+use dioxus_router::components::Link;
 
 use super::container::*;
 
