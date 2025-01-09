@@ -2,6 +2,31 @@ use dioxus::prelude::*;
 use super::background::*;
 use dioxus_router::navigation::NavigationTarget;
 
+use super::container::*;
+
+#[derive(Clone, Props, PartialEq)]
+pub struct SidebarLayoutProps {
+    #[props(optional)]
+    id: String,
+    sidebar: Element,
+    children: Element,
+}
+
+#[component]
+pub fn SideBarLayout(props: SidebarLayoutProps) -> Element {
+    rsx!{
+        Row {
+            id: props.id,
+            no_wrap: true,
+            {props.sidebar}
+            main {
+                {props.children}
+            }
+        }
+
+    }
+}
+
 #[derive(Clone, Props, PartialEq)]
 pub struct SidebarProps {
     #[props(optional)]
@@ -14,17 +39,23 @@ pub struct SidebarProps {
     #[props(optional, default = 0)]
     flex_shrink: u8,
     #[props(optional, default = 3)]
-    p: u8,
+    pad: u8,
 }
 
 #[component]
 pub fn SideBar(props: SidebarProps) -> Element {
     let background_color: &str = props.background_color.into();
-    let class_list = vec!["sidebar".to_string(), "flex-column".to_string(), background_color.to_string(), format!("flex-shrink-{}", props.flex_shrink), format!("p-{}", 0)];
+    let class_list = vec![
+        "wrapper sidebar flex-column".to_string(),
+        background_color.to_string(),
+        format!("flex-shrink-{}", props.flex_shrink),
+        format!("p-{}", props.pad)
+    ];
 
     let class_list = class_list.join(" ");
     rsx!{
         aside {
+            style: "width: 280px",
             class: class_list,
             id: props.id,
             match props.header {

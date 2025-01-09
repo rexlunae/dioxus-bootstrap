@@ -17,10 +17,7 @@ fn App() -> Element {
         // Global app resources
         document::Link { rel: "icon", href: FAVICON }
         GlobalTheme {}
-        Container {
-            size: ExtendedSize::Fluid,
-            Router::<Route> {}
-        }
+        Router::<Route> {}
     }
 }
 
@@ -30,14 +27,19 @@ pub fn Menu() -> Element {
     let menu1: NavigationTarget = Route::Page1{}.into();
     let menu2: NavigationTarget = Route::Page2{id:0}.into();
     rsx!{
-        SideBar {
-            SideBarMenu {
-                SideBarMenuItem {active: path == Route::Page1{},link_to: Some(menu1), "Menu 1" }
-                SideBarMenuItem {active: path == Route::Page2{id:0}, link_to: Some(menu2), "Menu 2" }
-                SideBarMenuItem {active: false, "Menu 3"}
-            }
+        SideBarLayout {
+            sidebar: rsx!{
+                SideBar {
+                    SideBarMenu {
+                        SideBarMenuItem {active: path == Route::Page1{},link_to: Some(menu1), "Menu 1" }
+                        SideBarMenuItem {active: path == Route::Page2{id:0}, link_to: Some(menu2), "Menu 2" }
+                        SideBarMenuItem {active: false, "Menu 3"}
+                    }
+                }
+            },
+            Outlet::<Route> {}
         }
-        Outlet::<Route> {}
+
     }
 }
 

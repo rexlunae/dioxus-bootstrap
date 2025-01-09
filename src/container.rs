@@ -1,4 +1,6 @@
 use dioxus::prelude::*;
+//use crate::FlexBoxClassSet;
+
 use super::size::*;
 
 #[derive(Clone, Props, PartialEq)]
@@ -38,10 +40,36 @@ pub fn Container(props: ContainerProps) -> Element {
     }
 }
 
+#[derive(Clone, Props, PartialEq)]
+pub struct RowProps {
+    #[props(optional)]
+    id: String,
+    #[props(optional, default = false)]
+    no_wrap: bool,
+    //#[props(optional, default = FlexBoxClassSet::new())]
+    //flexbox: super::FlexBoxClassSet<RowProps>,
+    children: Element,
+}
+
+impl super::FlexBoxContainerProps for RowProps {
+    fn prefix() -> &'static str {"row"}
+}
+
 #[component]
-pub fn Row() -> Element {
+pub fn Row(props: RowProps) -> Element {
+    let mut class_list = vec!["row".to_string()];
+
+    if props.no_wrap {
+        class_list.push("d-flex flex-nowrap".to_string())
+    }
+
+    let class_list = class_list.join(" ");
     rsx!{
-        div { class: "row" }
+        div {
+            id: props.id,
+            class: class_list,
+            {props.children}
+        }
     }
 }
 
@@ -51,22 +79,37 @@ pub struct ColProps {
     id: String,
     #[props(optional, default = 0)]
     span: u8,
+    #[props(optional, default = false)]
+    no_wrap: bool,
     #[props(optional, default = ExtendedSize::Normal)]
     size: ExtendedSize,
+    //#[props(optional, default = FlexBoxClassSet::new())]
+    //flexbox: super::FlexBoxClassSet<ColProps>,
+    children: Element,
+}
+
+impl super::FlexBoxContainerProps for ColProps {
+    fn prefix() -> &'static str {"col"}
 }
 
 #[component]
 pub fn Col(props: ColProps) -> Element {
-    let mut class = "col".to_string();
+    let mut class_list = vec!["col".to_string()];
+
+    if props.no_wrap {
+        class_list.push("d-flex flex-nowrap".to_string())
+    }
+
     if props.span > 0 {
         if props.size != ExtendedSize::Normal {
             let size: &str = props.size.into();
-            class = format!("{}-{}-{}", class, size, props.span)
+            class_list.push(format!("col-{}-{}", size, props.span))
         }
-        class = format!("{}-{}", class, props.span)
+        else { class_list.push(format!("col-{}", props.span)) }
     }
 
+    let class_list = class_list.join(" ");
     rsx!{
-        div { class: class }
+        div { class: class_list, {props.children} }
     }
 }
