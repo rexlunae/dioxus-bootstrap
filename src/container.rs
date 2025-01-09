@@ -51,9 +51,9 @@ pub struct RowProps {
     children: Element,
 }
 
-impl super::FlexBoxContainerProps for RowProps {
-    fn prefix() -> &'static str {"row"}
-}
+//impl super::FlexBoxContainerProps for RowProps {
+//    fn prefix() -> &'static str {"row"}
+//}
 
 #[component]
 pub fn Row(props: RowProps) -> Element {
@@ -88,9 +88,9 @@ pub struct ColProps {
     children: Element,
 }
 
-impl super::FlexBoxContainerProps for ColProps {
-    fn prefix() -> &'static str {"col"}
-}
+//impl super::FlexBoxContainerProps for ColProps {
+//    fn prefix() -> &'static str {"col"}
+//}
 
 #[component]
 pub fn Col(props: ColProps) -> Element {
