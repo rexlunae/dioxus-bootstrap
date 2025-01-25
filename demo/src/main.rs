@@ -27,16 +27,47 @@ pub fn Menu() -> Element {
     let menu1: NavigationTarget = Route::Page1{}.into();
     let menu2: NavigationTarget = Route::Page2{id:0}.into();
     rsx!{
+        NavBar {
+            brand_image: Some(FAVICON),
+            brand_link_to: Some(menu1.clone()),
+            toggler_id: Some("navbarTogglerDemo01".to_string()),
+            TabSet {
+                varient: TabSetVarient::Underline,
+                Tab {
+                    active: path == Route::Page1{},
+                    link_to: Some(menu1.clone()),
+                    "Menu 1"
+                }
+                Tab {
+                    active: path == Route::Page2{id:0},
+                    link_to: Some(menu2.clone()),
+                    "Menu 2"
+                }
+            }
+        }
         SideBarLayout {
             sidebar: rsx!{
                 SideBar {
                     SideBarMenu {
-                        SideBarMenuItem {active: path == Route::Page1{},link_to: Some(menu1), "Menu 1" }
-                        SideBarMenuItem {active: path == Route::Page2{id:0}, link_to: Some(menu2), "Menu 2" }
+                        SideBarMenuItem {active: path == Route::Page1{},link_to: Some(menu1.clone()), "Menu 1" }
+                        SideBarMenuItem {active: path == Route::Page2{id:0}, link_to: Some(menu2.clone()), "Menu 2" }
                         SideBarMenuItem {active: false, "Menu 3"}
                     }
                 }
             },
+            TabSet {
+                varient: TabSetVarient::Underline,
+                Tab {
+                    active: path == Route::Page1{},
+                    link_to: Some(menu1.clone()),
+                    "Menu 1"
+                }
+                Tab {
+                    active: path == Route::Page2{id:0},
+                    link_to: Some(menu2.clone()),
+                    "Menu 2"
+                }
+            }
             Outlet::<Route> {}
         }
 

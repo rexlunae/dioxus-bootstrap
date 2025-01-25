@@ -11,7 +11,7 @@ documentation = "../README.md"
 
 [dependencies]
 dioxus = { version = "0.6.0", features = ["fullstack", "router"] }
-dioxus-bootstrap = { version = "0.1.5", path = "../" }
+dioxus-bootstrap = { version = "0.1.7", path = "../" }
 
 [features]
 default = []

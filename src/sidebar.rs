@@ -39,6 +39,8 @@ pub struct SidebarProps {
     background_color: BackGroundColor,
     #[props(optional, default = 0)]
     flex_shrink: u8,
+    #[props(optional, default = "300px".to_string())]
+    width: String,
     #[props(optional, default = 3)]
     pad: u8,
 }
@@ -53,10 +55,12 @@ pub fn SideBar(props: SidebarProps) -> Element {
         format!("p-{}", props.pad)
     ];
 
+    let width_style = format!("width: {}", props.width);
+
     let class_list = class_list.join(" ");
     rsx!{
         aside {
-            style: "width: 280px",
+            style: width_style,
             class: class_list,
             id: props.id,
             match props.header {
