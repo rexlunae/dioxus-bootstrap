@@ -4,7 +4,7 @@ const AUTO: Asset = asset!("/assets/auto_mode.js");
 const DARK: Asset = asset!("/assets/dark_mode.js");
 const LIGHT: Asset = asset!("/assets/light_mode.js");
 
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, Debug)]
 pub enum ThemeMode {
     Auto,
     Dark,
@@ -31,14 +31,20 @@ impl Into<&str> for ThemeMode {
 }
 
 #[derive(Clone, Props, PartialEq)]
-pub struct ThemeProps {
+pub struct GlobalThemeProps {
     #[props(optional, default = ThemeMode::Auto)]
-    mode: ThemeMode,
-    children: Element,
+    pub mode: ThemeMode,
     /// set to false if you don't want ot load the bootstrap assets from the CDN.
     /// You will need to load them manually.
     #[props(optional, default = true)]
-    cdn_load_assets: bool,
+    pub cdn_load_assets: bool,
+}
+
+#[derive(Clone, Props, PartialEq)]
+pub struct LocalThemeProps {
+    #[props(optional, default = ThemeMode::Auto)]
+    pub mode: ThemeMode,
+    pub children: Element,
 }
 
 /// Sets dark/light mode based on system setting on the entire html tag.
@@ -46,7 +52,7 @@ pub struct ThemeProps {
 /// you want to load those assets some other way, you can disable this
 /// with the cdn_load_assets prop.
 #[component]
-pub fn GlobalTheme(props: ThemeProps) -> Element {
+pub fn GlobalTheme(props: GlobalThemeProps) -> Element {
     let mode = match props.mode {
         ThemeMode::Light => LIGHT,
         ThemeMode::Dark => DARK,
@@ -75,7 +81,7 @@ pub fn GlobalTheme(props: ThemeProps) -> Element {
 
 /// Overrides the larger mode for child nodes.
 #[component]
-pub fn LocalTheme(props: ThemeProps) -> Element {
+pub fn LocalTheme(props: LocalThemeProps) -> Element {
     let theme_requested: &str = props.mode.into();
 
     rsx!{

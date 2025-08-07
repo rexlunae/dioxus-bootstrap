@@ -21,6 +21,8 @@ impl From<FormMethod> for &str {
 pub struct FormProps {
     #[props(optional)]
     id: String,
+    #[props(optional, default = "".to_string())]
+    class: String,
     #[props(optional, default = false)]
     disabled: bool,
     #[props(optional, default = None)]
@@ -38,6 +40,7 @@ pub fn Form(props: FormProps) -> Element {
     rsx!{
         form {
             id: props.id,
+            class: props.class,
             action: props.action,
             method: method,
             fieldset {

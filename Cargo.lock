@@ -732,10 +732,12 @@ checksum = "e8566979429cf69b49a5c740c60791108e86440e8be149bbea4fe54d2c32d6e2"
 
 [[package]]
 name = "demo"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "dioxus",
  "dioxus-bootstrap",
+ "wasm-bindgen",
+ "web-sys",
 ]
 
 [[package]]
@@ -774,9 +776,9 @@ dependencies = [
 
 [[package]]
 name = "dioxus"
-version = "0.6.2"
+version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0e7d69c4bd197db4739654af0a37c426417b45d5f495df8d10fafeb5da846dca"
+checksum = "60a247114500f1a78e87022defa8173de847accfada8e8809dfae23a118a580c"
 dependencies = [
  "dioxus-cli-config",
  "dioxus-config-macro",
@@ -801,7 +803,7 @@ dependencies = [
 
 [[package]]
 name = "dioxus-bootstrap"
-version = "0.1.7"
+version = "0.2.0"
 dependencies = [
  "dioxus",
  "dioxus-router",
@@ -1121,9 +1123,9 @@ dependencies = [
 
 [[package]]
 name = "dioxus-router"
-version = "0.6.2"
+version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cc284034f3fffb198a189eaaa8be854520770160d79bdc85b8ad64a8e8170433"
+checksum = "7266a76fc9e4a91f56499d1d1aecfff7168952b6627a6008b4e9748d6bf863e4"
 dependencies = [
  "dioxus-cli-config",
  "dioxus-history",
