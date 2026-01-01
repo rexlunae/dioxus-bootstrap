@@ -1,5 +1,4 @@
 use dioxus::prelude::*;
-use super::size::*;
 use dioxus_router::navigation::NavigationTarget;
 use dioxus_router::components::Link;
 
@@ -105,7 +104,7 @@ pub fn NavBar(props: NavBarProps) -> Element {
                         aria_expanded: "false",
                         span {
                             class: "navbar-toggler-icon",
-                        }         
+                        }
                     }
                     div {
                         class: "collapse navbar-collapse",
@@ -142,4 +141,3 @@ pub struct NavBarContentProps {
     #[props(optional)]
     id: String,
 }
-

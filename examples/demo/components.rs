@@ -1,7 +1,8 @@
 use dioxus::prelude::*;
+use dioxus_router::components::Link;
 use crate::Route;
 
-fn scroll_to_section(_section_id: &str) {
+fn scroll_to_section(section_id: &str) {
     #[cfg(feature = "web")]
     {
         dioxus::document::eval(&format!(

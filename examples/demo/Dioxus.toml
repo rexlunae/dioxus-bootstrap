@@ -6,7 +6,7 @@ name = "demo"
 [web.app]
 
 # HTML title tag content
-title = "demo"
+title = "Dioxus Bootstrap Demo"
 
 # include `assets` in web platform
 [web.resource]

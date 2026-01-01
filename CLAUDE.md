@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is `dioxus-bootstrap`, an unofficial Bootstrap-based component library for Dioxus applications. It provides Bootstrap-styled components with automatic light/dark mode switching and CDN asset loading capabilities.
+This is `dioxus-bootstrap`, an unofficial Bootstrap-based component library for Dioxus 0.7 applications. It provides Bootstrap-styled components with automatic light/dark mode switching and CDN asset loading capabilities.
 
 ## Development Commands
 
@@ -14,11 +14,11 @@ This is `dioxus-bootstrap`, an unofficial Bootstrap-based component library for 
 cargo build
 
 # Run the demo application (primary way to test the library)
-cd demo && dx serve --platform web
+dx serve --example demo --platform web
 
 # Run demo on different platforms
-cd demo && dx serve --platform desktop
-cd demo && dx serve --platform mobile
+dx serve --example demo --platform desktop
+dx serve --example demo --platform mobile
 ```
 
 ### Testing
@@ -44,7 +44,8 @@ No formal test suite is configured. Testing is primarily done through the demo a
 - **UI Components**: Alert, Badge, Toast, Dropdown, ListGroup
 - **Utility Components**: Comprehensive Bootstrap utility classes for spacing, display, flexbox, colors, etc.
 
-### Demo Application (`demo/`)
+### Demo Application (`examples/demo/`)
+
 - **`main.rs`**: Main app with routing setup, demonstrates component usage patterns
 - **`views.rs`**: Page components showing library usage examples
 - Serves as both documentation and testing environment
@@ -62,13 +63,13 @@ All components support Bootstrap's `data-bs-theme` attribute system for light/da
 ### Size System
 Components use consistent size enums from `size.rs` (`Size`, `ExtendedSize`) that map to Bootstrap size classes.
 
-### Navigation Integration  
+### Navigation Integration
 Components integrate with `dioxus-router` via `NavigationTarget` for consistent routing behavior.
 
 ## Development Workflow
 
 1. Make changes to component modules in `src/`
-2. Test changes in demo application: `cd demo && dx serve --platform web`
+2. Test changes in demo application: `dx serve --example demo --platform web`
 3. Components can be mixed with raw Bootstrap HTML - library is designed for interoperability
 4. No formal linting/testing setup - rely on Rust compiler and demo testing
 

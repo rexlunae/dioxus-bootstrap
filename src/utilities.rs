@@ -1,5 +1,3 @@
-use dioxus::prelude::*;
-
 // Text utilities
 #[derive(Clone, Copy, PartialEq)]
 pub enum TextAlign {

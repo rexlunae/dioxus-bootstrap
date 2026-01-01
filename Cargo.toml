@@ -1,6 +1,6 @@
 [package]
 name = "dioxus-bootstrap"
-version = "0.2.0"
+version = "0.7.0"
 authors = ["Erica Stith <rexlunae@gmail.com>"]
 edition = "2024"
 description = "A set of Bootstrap-based components for Dioxus."
@@ -11,8 +11,8 @@ keywords = ["dioxus", "bootstrap", "components", "web"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dioxus = { version = "0.6.3", features = ["fullstack"] }
-dioxus-router = "0.6.3"
+dioxus = { version = "0.7" }
+dioxus-router = "0.7"
 
 [features]
 default = []
@@ -32,7 +32,6 @@ inherits = "dev"
 [profile.android-dev]
 inherits = "dev"
 
-[workspace]
-members = [
-    "demo"
-]
+[[example]]
+name = "demo"
+path = "examples/demo/main.rs"

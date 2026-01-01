@@ -1,5 +1,7 @@
 use dioxus::prelude::*;
 use dioxus_bootstrap::*;
+use dioxus_router::{Routable, Router};
+use dioxus_router::components::{Link, Outlet};
 
 mod components;
 mod pages;
@@ -7,7 +9,7 @@ mod views;
 
 use components::*;
 
-const FAVICON: Asset = asset!("/assets/favicon.ico");
+// const FAVICON: Asset = asset!("/assets/favicon.ico");
 
 fn main() {
     dioxus::launch(App);
@@ -16,7 +18,7 @@ fn main() {
 #[component]
 fn App() -> Element {
     rsx! {
-        document::Link { rel: "icon", href: FAVICON }
+        // document::Link { rel: "icon", href: FAVICON }
         // Prism.js for syntax highlighting with theme-aware styling
         document::Script {
             src: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"
@@ -32,11 +34,11 @@ fn App() -> Element {
                 color: var(--bs-body-color) !important;
                 border: 1px solid var(--bs-border-color) !important;
             }}
-            
+
             code[class*="language-"] {{
                 color: var(--bs-body-color) !important;
             }}
-            
+
             .token.comment,
             .token.prolog,
             .token.doctype,
@@ -44,11 +46,11 @@ fn App() -> Element {
                 color: var(--bs-secondary-color) !important;
                 font-style: italic;
             }}
-            
+
             .token.punctuation {{
                 color: var(--bs-body-color) !important;
             }}
-            
+
             .token.property,
             .token.tag,
             .token.constant,
@@ -56,12 +58,12 @@ fn App() -> Element {
             .token.deleted {{
                 color: var(--bs-danger) !important;
             }}
-            
+
             .token.boolean,
             .token.number {{
                 color: var(--bs-warning) !important;
             }}
-            
+
             .token.selector,
             .token.attr-name,
             .token.string,
@@ -70,7 +72,7 @@ fn App() -> Element {
             .token.inserted {{
                 color: var(--bs-success) !important;
             }}
-            
+
             .token.operator,
             .token.entity,
             .token.url,
@@ -79,29 +81,29 @@ fn App() -> Element {
             .token.variable {{
                 color: var(--bs-info) !important;
             }}
-            
+
             .token.atrule,
             .token.attr-value,
             .token.function,
             .token.class-name {{
                 color: var(--bs-primary) !important;
             }}
-            
+
             .token.keyword {{
                 color: var(--bs-purple, #6f42c1) !important;
                 font-weight: bold;
             }}
-            
+
             .token.regex,
             .token.important {{
                 color: var(--bs-warning) !important;
             }}
-            
+
             .token.important,
             .token.bold {{
                 font-weight: bold;
             }}
-            
+
             .token.italic {{
                 font-style: italic;
             }}
@@ -136,7 +138,7 @@ pub enum Route {
 fn Layout() -> Element {
     rsx! {
         ComponentNav {}
-        
+
         Container {
             container_type: ContainerType::ContainerFluid,
             Row {
@@ -160,29 +162,29 @@ fn Layout() -> Element {
                 }
             }
         }
-        
+
         footer {
             class: "bg-dark text-light py-4 mt-5",
             Container {
                 Row {
                     Col {
                         md: Some(6),
-                        h5 { "Dioxus Bootstrap" }
-                        p { class: "mb-0", "A comprehensive Bootstrap component library for Dioxus applications." }
+                        h5 { "Dioxus Bootstrap 0.7" }
+                        p { class: "mb-0", "A comprehensive Bootstrap 5.3 component library for Dioxus 0.7 applications." }
                     }
                     Col {
                         md: Some(6),
                         class: "text-md-end".to_string(),
-                        p { class: "mb-0", "Built with ❤️ using Dioxus & Bootstrap 5.3" }
-                        p { class: "mb-0", 
-                            a { 
-                                href: "https://github.com/dioxuslabs/dioxus", 
+                        p { class: "mb-0", "Built with ❤️ using Dioxus 0.7 & Bootstrap 5.3" }
+                        p { class: "mb-0",
+                            a {
+                                href: "https://github.com/dioxuslabs/dioxus",
                                 class: "text-light",
                                 "Dioxus Framework"
                             }
                             " | "
-                            a { 
-                                href: "https://getbootstrap.com", 
+                            a {
+                                href: "https://getbootstrap.com",
                                 class: "text-light",
                                 "Bootstrap"
                             }
@@ -207,13 +209,13 @@ fn Home() -> Element {
                         Col {
                             md: Some(8),
                             class: "text-center".to_string(),
-                            h1 { 
+                            h1 {
                                 class: "display-4 fw-bold mb-3",
-                                "🎨 Dioxus Bootstrap Components" 
+                                "🎨 Dioxus Bootstrap Components"
                             }
-                            p { 
+                            p {
                                 class: "lead mb-4",
-                                "A comprehensive, type-safe Bootstrap component library for Dioxus applications. Build beautiful, responsive UIs with familiar Bootstrap styling and full Rust integration."
+                                "A comprehensive, type-safe Bootstrap component library for Dioxus 0.7 applications. Build beautiful, responsive UIs with familiar Bootstrap styling and full Rust integration."
                             }
                             div {
                                 Link {
@@ -232,7 +234,7 @@ fn Home() -> Element {
                     }
                 }
             }
-            
+
             // Features section
             Container {
                 Row {
@@ -281,7 +283,7 @@ fn Home() -> Element {
                         }
                     }
                 }
-                
+
                 // Quick start section
                 Row {
                     class: "mb-5".to_string(),
@@ -291,13 +293,17 @@ fn Home() -> Element {
                                 h4 { class: "mb-0", "Quick Start" }
                             }
                             CardBody {
-                                p { "Get started with Dioxus Bootstrap in just a few steps:" }
+                                p { "Get started with Dioxus Bootstrap (for Dioxus 0.7) in just a few steps:" }
                                 ol {
-                                    li { 
+                                    li {
+                                        "Ensure you're using Dioxus 0.7: "
+                                        code { "dioxus = \"0.7\"" }
+                                    }
+                                    li {
                                         "Add the dependency: "
                                         code { "cargo add dioxus-bootstrap" }
                                     }
-                                    li { 
+                                    li {
                                         "Import and use: "
                                         code { "use dioxus_bootstrap::*;" }
                                     }
@@ -312,7 +318,7 @@ fn Home() -> Element {
                         }
                     }
                 }
-                
+
                 // Component overview
                 h2 { class: "mb-4", "Component Categories" }
                 Row {
@@ -412,7 +418,7 @@ fn Home() -> Element {
                         }
                     }
                 }
-                
+
                 // Stats section
                 Row {
                     class: "text-center py-5 bg-body-secondary rounded mt-5".to_string(),
@@ -457,7 +463,7 @@ fn LayoutPage() -> Element {
     rsx! { pages::LayoutPage {} }
 }
 
-#[component] 
+#[component]
 fn FormsPage() -> Element {
     rsx! { pages::FormsPage {} }
 }
@@ -482,10 +488,10 @@ fn Legacy(id: i32) -> Element {
                 "This is the legacy route structure. Use the new showcase for comprehensive examples."
             }
             h1 { "{text}" }
-            Link { 
+            Link {
                 to: Route::Showcase {},
                 class: "btn btn-primary",
-                "Back to Showcase" 
+                "Back to Showcase"
             }
         }
     }

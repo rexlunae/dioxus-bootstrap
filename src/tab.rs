@@ -1,5 +1,4 @@
 use dioxus::prelude::*;
-use super::size::*;
 use dioxus_router::navigation::NavigationTarget;
 use dioxus_router::components::Link;
 
@@ -81,7 +80,7 @@ pub struct TabProps {
     #[props(optional)]
     onclick: EventHandler<MouseEvent>,
     #[props(optional)]
-    onmounted: EventHandler<MountedEvent>,  
+    onmounted: EventHandler<MountedEvent>,
     #[props(optional, default = String::from(""))]
     style: String,
 }
@@ -95,7 +94,7 @@ pub fn Tab(props: TabProps) -> Element {
     if props.dropdown {
         class_list.push_str(" dropdown");
     }
-    
+
     rsx! {
         li {
             class: class_list,

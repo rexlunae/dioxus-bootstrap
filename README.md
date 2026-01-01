@@ -1,6 +1,6 @@
 # Dioxus Bootstrap Components
 
-An unofficial Bootstrap 5.3 component library for Dioxus applications, providing a comprehensive set of responsive, accessible UI components with automatic light/dark mode switching.
+An unofficial Bootstrap 5.3 component library for Dioxus 0.7 applications, providing a comprehensive set of responsive, accessible UI components with automatic light/dark mode switching.
 
 > ⚠ This is very early work in progress. I am publishing it in case it is useful to anyone else, but please understand that it is expected to be wildly unstable for a while. ⚠
 
@@ -116,13 +116,13 @@ git clone https://github.com/your-repo/dioxus-bootstrap
 cd dioxus-bootstrap
 
 # Run the web demo (recommended)
-cd demo && dx serve --platform web
+dx serve --example demo --platform web
 
 # Or run on desktop
-cd demo && dx serve --platform desktop
+dx serve --example demo --platform desktop
 
 # Or run on mobile
-cd demo && dx serve --platform mobile
+dx serve --example demo --platform mobile
 ```
 
 The demo application serves as both documentation and a testing environment. It demonstrates:
@@ -146,16 +146,17 @@ The demo is organized into several pages:
 
 ```rust
 use dioxus::prelude::*;
-use dioxus_bootstrap::prelude::*;
+use dioxus_bootstrap::*;
 
+#[component]
 fn App() -> Element {
     rsx! {
         // Enable Bootstrap assets and theme switching
-        GlobalTheme { theme: Theme::Auto }
-        
+        GlobalTheme { mode: ThemeMode::Auto }
+
         Container {
             Row {
-                Col { md: 6,
+                Col { md: "6",
                     Card {
                         CardHeader { "Welcome" }
                         CardBody {
