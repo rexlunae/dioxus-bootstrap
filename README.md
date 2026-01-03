@@ -4,6 +4,12 @@ An unofficial Bootstrap 5.3 component library for Dioxus 0.7 applications, provi
 
 > ⚠ This is very early work in progress. I am publishing it in case it is useful to anyone else, but please understand that it is expected to be wildly unstable for a while. ⚠
 
+## Support
+
+If you find this library useful, consider supporting its development:
+
+[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/transnormative)
+
 ## Features
 
 - 🎨 **Full Bootstrap 5.3 Integration** - Complete component library with Bootstrap styling
