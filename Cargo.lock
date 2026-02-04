@@ -779,7 +779,7 @@ dependencies = [
 
 [[package]]
 name = "dioxus-bootstrap"
-version = "0.7.0"
+version = "0.7.1"
 dependencies = [
  "dioxus",
  "dioxus-router",
