@@ -100,7 +100,6 @@ pub struct ButtonProps {
     #[props(optional, default = None)]
     link_to: Option<NavigationTarget>,
 
-    #[props(optional)]
     children: Element,
     #[props(optional)]
     onclick: EventHandler<MouseEvent>,
